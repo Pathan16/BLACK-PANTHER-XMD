@@ -383,7 +383,7 @@ Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURICom
      * @param {*} options 
      * @returns 
      */
-    GojoMdNx.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    GojoMdNx.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {true
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -450,7 +450,7 @@ Tol = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeURICom
            }
        let type = '', mimetype = mime, pathFile = filename
        if (options.asDocument) type = 'document'
-       if (options.asSticker || /webp/.test(mime)) {
+       if (options.asSticker || /webp/.test(mime)) {true
         let { writeExif } = require('./lib/exif')
         let media = { mimetype: mime, data }
         pathFile = await writeExif(media, { packname: options.packname ? options.packname : global.packname, author: options.author ? options.author : global.author, categories: options.categories ? options.categories : [] })
